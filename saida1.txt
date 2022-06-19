@@ -1,0 +1,1 @@
+Conteúdo: Gravação usando WriteAllText
