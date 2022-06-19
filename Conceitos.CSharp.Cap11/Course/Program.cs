@@ -11,7 +11,7 @@ namespace Course
     {
         static void Main(string[] args)
         {
-            Ex06();
+            Ex04();
         }
 
         static void Ex01()
@@ -49,6 +49,7 @@ namespace Course
                     Thread.Sleep(500);
                 }
             });
+
             t3.Wait();
 
             for (int i = 0; i < 20; i++)
@@ -130,7 +131,7 @@ namespace Course
 
         private static void Funcao1()
         {
-            Thread.Sleep(1000);
+            Thread.Sleep(3000);
             Console.WriteLine("Tarefa 1");
         }
 
@@ -142,7 +143,7 @@ namespace Course
 
         private static void Funcao3()
         {
-            Thread.Sleep(3000);
+            Thread.Sleep(2000);
             Console.WriteLine("Tarefa 3");
         }
 
