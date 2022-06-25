@@ -1,0 +1,67 @@
+﻿USE DBAplicacaoBancaria
+GO
+
+--tabela TBClientes
+CREATE TABLE TBClientes
+(
+NumeroDocumento VARCHAR(14) NOT NULL,
+Nome VARCHAR(50) NOT NULL,
+Idade INT NOT NULL,
+Sexo VARCHAR(1) NOT NULL,
+PRIMARY KEY(NumeroDocumento),
+CONSTRAINT CT_SEXO CHECK(Sexo IN ('M','F'))
+)
+GO
+
+--tabela TBEndereco
+CREATE TABLE TBEnderecos
+(
+Id INT PRIMARY KEY IDENTITY(1,1),
+NumeroDocumento VARCHAR(14) NOT NULL,
+Logradouro VARCHAR(50) NOT NULL,
+Numero SMALLINT NOT NULL,
+Cidade VARCHAR(40) NOT NULL,
+Cep VARCHAR(8) NOT NULL,
+FOREIGN KEY (NumeroDocumento) REFERENCES TBClientes(NumeroDocumento),
+UNIQUE (NumeroDocumento)
+)
+GO
+
+--tabela TBContas
+CREATE TABLE TBContas
+(
+Id INT PRIMARY KEY IDENTITY(1,1),
+NumeroDocumento VARCHAR(14) NOT NULL,
+NumeroBanco INT NOT NULL,
+NumeroAgencia VARCHAR(4) NOT NULL,
+NumeroConta VARCHAR(20) NOT NULL,
+Limite FLOAT NOT NULL,
+FOREIGN KEY (NumeroDocumento)
+REFERENCES TBClientes(NumeroDocumento)
+)
+GO
+
+--tabela TBSaldos
+CREATE TABLE TBSaldos
+(
+Id INT PRIMARY KEY IDENTITY(1,1),
+IdConta INT NOT NULL,
+Saldo FLOAT NOT NULL
+FOREIGN KEY (IdConta) REFERENCES TBContas(Id),
+UNIQUE (IdConta)
+)
+GO
+
+--tabela TBMovimentos
+CREATE TABLE TBMovimentos
+(
+Id INT PRIMARY KEY IDENTITY(1,1),
+IdConta INT NOT NULL,
+Data DATETIME NOT NULL,
+Historico VARCHAR(20) NOT NULL,
+Valor FLOAT NOT NULL,
+Operacao INT NOT NULL,
+FOREIGN KEY (IdConta) REFERENCES TBContas(Id),
+CONSTRAINT CT_OPERACAO CHECK(Operacao IN (1,2))
+)
+GO

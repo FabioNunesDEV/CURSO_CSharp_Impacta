@@ -163,7 +163,7 @@ namespace Course
         static void TestarDapperContribDelete()
         {
             using (var conn = new SqlConnection(conexao))
-            {
+            {                
                 //remove o produto com base no Id (chave primária)
                 var removido = conn.Delete<Produto>(new Produto { Id = 12 });
 

@@ -1,0 +1,10 @@
+Cliente: Fabio Nunes
+Banco: 27
+Agência: 0001
+Conta: 100102
+-----------------------------------
+25/06/2022 DEPÓSITO    10.000,00
+-----------------------------------
+Saldo: R$ 10.000,00
+Limite: R$ 5.000,00
+Saldo Disponível:  c
